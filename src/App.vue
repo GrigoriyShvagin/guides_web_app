@@ -11,4 +11,11 @@ defineComponent({ name: "App" });
 const layout = computed(() => AppLayout);
 </script>
 
-<style></style>
+<style>
+body {
+  margin: 0;
+}
+* {
+  font-family: sans-serif;
+}
+</style>
