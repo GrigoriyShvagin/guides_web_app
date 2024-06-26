@@ -219,13 +219,13 @@ const currentInfo = ref("Top Picks");
     margin-bottom: 5px;
   }
   .featured_content {
-    width: 80%;
+    width: 90%;
   }
 }
 .info_list {
   display: flex;
   margin: 0 0 20px 0;
-  width: 80%;
+  width: 90%;
   overflow-x: scroll;
   scrollbar-width: none;
   p {
