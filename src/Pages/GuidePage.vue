@@ -1,7 +1,9 @@
 <template>
   <div class="content">
-    <div class="header">
-      <img :src="currentGuide.mainImg" alt="" />
+    <div
+      class="header"
+      :style="{ backgroundImage: 'url(' + currentGuide.mainImg + ')' }"
+    >
       <p class="">
         {{ currentGuide.name }}
       </p>
@@ -64,8 +66,9 @@ function checkCurrChap(id) {
 
 <style scoped>
 .header {
+  height: 250px;
   font-size: 32px;
-
+  background-size: cover;
   font-weight: 700;
   position: relative;
   p {
@@ -76,7 +79,7 @@ function checkCurrChap(id) {
   }
   img {
     height: 250px;
-    width: 100vw;
+    width: 100%;
     border-radius: 0 0 30px 30px;
   }
 }
