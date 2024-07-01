@@ -1,5 +1,7 @@
-<template>вторая страница</template>
+<template>
+  <div class="content"><div class="header"></div></div>
+</template>
 
-<script lang="ts" setup></script>
+<script setup></script>
 
 <style></style>
