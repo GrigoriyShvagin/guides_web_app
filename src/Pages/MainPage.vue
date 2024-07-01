@@ -4,9 +4,9 @@
       <input
         type="text"
         class="input_main"
-        placeholder="Search Public Guides"
+        placeholder="Найдите нужные гайды"
       />
-      <Icon icon="material-symbols:search" />
+      <Icon icon="gravity-ui:magnifier" />
     </div>
     <div class="block_info">
       <div class="info_list">
@@ -15,126 +15,35 @@
           @click="currentInfo = 'Top Picks'"
           :class="{ activeInfo: currentInfo == 'Top Picks' }"
         >
-          Top Picks
+          Топ-10
         </p>
         <p
           class=""
           @click="currentInfo = 'My GPTs'"
           :class="{ activeInfo: currentInfo == 'My GPTs' }"
         >
-          My GPTs
+          <Icon icon="material-symbols:star" />
+          Мои гайды
         </p>
         <p
           class=""
           @click="currentInfo = 'Featured'"
           :class="{ activeInfo: currentInfo == 'Featured' }"
         >
-          Featured
+          Избранное
         </p>
         <p
           class=""
           @click="currentInfo = 'Trand'"
           :class="{ activeInfo: currentInfo == 'Trand' }"
         >
-          Trand
+          Новые
         </p>
       </div>
     </div>
     <div class="featured_block">
-      <div class="featured_content">
-        <h3>Featured</h3>
-        <p class="header_discr">Curated top picks from this week</p>
-        <div class="curr_item">
-          <img src="/icon.png" alt="" />
-          <div class="item_text">
-            <div class="text_header">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit esse
-              quam voluptas eveniet ut impedit beatae qui quo voluptates enim
-              unde architecto ab laboriosam tenetur reprehenderit maxime ipsam,
-              optio quae.
-            </div>
-            <div class="text_content">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. In
-              minus, illo numquam nulla debitis amet suscipit consequuntur
-              excepturi accusantium doloribus assumenda cum perspiciatis sequi
-              consectetur non rerum eum voluptatum architecto.
-            </div>
-            <a href="https://telegram.com">telegram.com</a>
-          </div>
-        </div>
-        <div class="curr_item">
-          <img src="/icon.png" alt="" />
-          <div class="item_text">
-            <div class="text_header">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit esse
-              quam voluptas eveniet ut impedit beatae qui quo voluptates enim
-              unde architecto ab laboriosam tenetur reprehenderit maxime ipsam,
-              optio quae.
-            </div>
-            <div class="text_content">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. In
-              minus, illo numquam nulla debitis amet suscipit consequuntur
-              excepturi accusantium doloribus assumenda cum perspiciatis sequi
-              consectetur non rerum eum voluptatum architecto.
-            </div>
-            <a href="https://telegram.com">telegram.com</a>
-          </div>
-        </div>
-        <div class="curr_item">
-          <img src="/icon.png" alt="" />
-          <div class="item_text">
-            <div class="text_header">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit esse
-              quam voluptas eveniet ut impedit beatae qui quo voluptates enim
-              unde architecto ab laboriosam tenetur reprehenderit maxime ipsam,
-              optio quae.
-            </div>
-            <div class="text_content">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. In
-              minus, illo numquam nulla debitis amet suscipit consequuntur
-              excepturi accusantium doloribus assumenda cum perspiciatis sequi
-              consectetur non rerum eum voluptatum architecto.
-            </div>
-            <a href="https://telegram.com">telegram.com</a>
-          </div>
-        </div>
-        <div class="curr_item">
-          <img src="/icon.png" alt="" />
-          <div class="item_text">
-            <div class="text_header">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit esse
-              quam voluptas eveniet ut impedit beatae qui quo voluptates enim
-              unde architecto ab laboriosam tenetur reprehenderit maxime ipsam,
-              optio quae.
-            </div>
-            <div class="text_content">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. In
-              minus, illo numquam nulla debitis amet suscipit consequuntur
-              excepturi accusantium doloribus assumenda cum perspiciatis sequi
-              consectetur non rerum eum voluptatum architecto.
-            </div>
-            <a href="https://telegram.com">telegram.com</a>
-          </div>
-        </div>
-        <div class="curr_item">
-          <img src="/icon.png" alt="" />
-          <div class="item_text">
-            <div class="text_header">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit esse
-              quam voluptas eveniet ut impedit beatae qui quo voluptates enim
-              unde architecto ab laboriosam tenetur reprehenderit maxime ipsam,
-              optio quae.
-            </div>
-            <div class="text_content">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. In
-              minus, illo numquam nulla debitis amet suscipit consequuntur
-              excepturi accusantium doloribus assumenda cum perspiciatis sequi
-              consectetur non rerum eum voluptatum architecto.
-            </div>
-            <a href="https://telegram.com">telegram.com</a>
-          </div>
-        </div>
-      </div>
+      <MainGuides v-if="currentInfo == 'My GPTs'" />
+      <TopGuides v-if="currentInfo == 'Top Picks'" />
     </div>
   </div>
 </template>
@@ -142,18 +51,20 @@
 <script setup>
 import { Icon } from "@iconify/vue";
 import { ref } from "vue";
+import MainGuides from "@/components/MineGuides.vue";
+import TopGuides from "@/components/TopGuides.vue";
 
 const currentInfo = ref("Top Picks");
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
 * {
   margin: 0;
 }
 .curr_item {
-  background: #313131;
+  background: var(--bg-gray);
   padding: 10px;
-  border-radius: 10px;
+  border-radius: 4px;
   margin-top: 20px;
   display: flex;
   max-width: 500px;
@@ -217,6 +128,8 @@ const currentInfo = ref("Top Picks");
   h3 {
     color: #fff;
     margin-bottom: 5px;
+    font-size: 40px;
+    font-weight: 100;
   }
   .featured_content {
     width: 90%;
@@ -230,17 +143,26 @@ const currentInfo = ref("Top Picks");
   scrollbar-width: none;
   p {
     min-width: 100px;
-    background: #606060;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-gray);
     text-align: center;
     padding: 7px 10px;
     margin-right: 10px;
-    border-radius: 10px;
+    border-radius: 4px;
     font-weight: 500;
     color: #fff;
+    span svg {
+      color: #fff;
+    }
   }
   .activeInfo {
     background: #fff;
     color: #000;
+    svg {
+      color: #000;
+    }
   }
 }
 .input_block {
@@ -251,7 +173,7 @@ const currentInfo = ref("Top Picks");
   justify-content: center;
   align-items: center;
   svg {
-    color: #adadad;
+    color: #a1a1a1;
     width: 30px;
     height: 30px;
     position: absolute;
@@ -261,12 +183,12 @@ const currentInfo = ref("Top Picks");
 }
 .input_main {
   outline: none;
-  background: #606060;
+  background: var(--bg-gray);
   width: 80%;
   margin: 0 20px;
   border: none;
-  border-radius: 10px;
-  color: #adadad;
+  border-radius: 4px;
+  color: #ffffff;
   padding: 10px 20px 10px 50px;
   font-size: 16px;
 }

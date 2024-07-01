@@ -9,7 +9,7 @@ import FooterSection from "@/components/Footer.vue";
 
 <style lang="scss">
 body {
-  background: #000;
+  background: var(--main-bg);
   color: var(--tg-theme-text-color);
 }
 .footer {

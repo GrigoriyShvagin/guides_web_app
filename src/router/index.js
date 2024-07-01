@@ -9,6 +9,10 @@ const routes = [
     path: "/next",
     component: () => import("../Pages/NextPage.vue"),
   },
+  {
+    path: "/guide/:id",
+    component: () => import("../Pages/GuidePage.vue"),
+  },
 ];
 
 const router = createRouter({

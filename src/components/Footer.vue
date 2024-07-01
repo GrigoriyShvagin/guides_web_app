@@ -5,8 +5,8 @@
       @click="$router.push('/')"
       :class="{ active: $route.path == '/' }"
     >
-      <Icon icon="carbon:home" />
-      <span class="">Main</span>
+      <Icon icon="iconoir:home-simple" />
+      <span>Главная</span>
     </div>
     <div
       class="icon_block"
@@ -14,15 +14,15 @@
       :class="{ active: $route.path == '/add' || $route.path == '/add_form' }"
     >
       <Icon icon="simple-line-icons:plus" />
-      <span>Add</span>
+      <span>Создать</span>
     </div>
     <div
       class="icon_block"
       @click="$router.push('/earn')"
       :class="{ active: $route.path == '/earn' }"
     >
-      <Icon icon="healthicons:money-bag-outline" />
-      <span>Earn</span>
+      <Icon icon="gravity-ui:shopping-bag" />
+      <span>Заработок</span>
     </div>
   </div>
 </template>
@@ -36,15 +36,15 @@ import { defineComponent } from "vue";
 <style lang="scss" scoped>
 .footer_block {
   width: 100vw;
-  background: #000;
+  background: var(--bg-gray);
   height: 70px;
   padding-bottom: 10px;
   display: flex;
   justify-content: space-around;
   svg {
-    color: #ffffff89;
-    height: 45px;
-    width: 45px;
+    color: #ffffff;
+    height: 25px;
+    width: 25px;
     margin-bottom: 5px;
     transition: 0.3s;
   }
@@ -55,18 +55,21 @@ import { defineComponent } from "vue";
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     margin-top: 5px;
-    padding: 7px 15px;
-    background: #313131;
-    color: #ffffff89;
-    font-size: 14px;
-    border-radius: 10px;
+    padding: 0px 6vw;
+    color: #ffffff;
+    font-size: 12px;
+    border-radius: 4px;
+    span {
+      display: block;
+    }
   }
 }
 .active {
   svg,
   span {
-    color: #fff;
+    color: var(--active-footer);
   }
 }
 </style>

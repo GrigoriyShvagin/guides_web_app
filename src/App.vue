@@ -15,6 +15,12 @@ const layout = computed(() => AppLayout);
 body {
   margin: 0;
 }
+:root {
+  --main-bg: #0d0d0d;
+  --bg-gray: #2f2f2f;
+  --bg-buttons: #454444;
+  --active-footer: #0d99ff;
+}
 * {
   font-family: sans-serif;
 }
