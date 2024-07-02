@@ -11,7 +11,8 @@
     "core-js": "^3.8.3",
     "vue": "^3.2.13",
     "vue-router": "^4.4.0",
-    "vue-tg": "^0.6.1"
+    "vue-tg": "^0.6.1",
+    "vue3-canvas-video-player": "^1.2.3"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",
@@ -24,6 +25,7 @@
     "eslint-plugin-vue": "^8.0.3",
     "sass": "^1.77.6",
     "sass-loader": "^14.2.1",
+    "video.js": "^8.12.0",
     "webpack": "^5.92.1"
   },
   "eslintConfig": {

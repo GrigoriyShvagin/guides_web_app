@@ -26,8 +26,11 @@ a {
   --active-footer: #0d99ff;
   --text-gray: #a2a2a2;
   --text-white: #e6e6e6;
+  --text-black: black;
   --text-link: #00d1ff;
   --border-gray: #757575;
+  --button-up-color: #242424;
+  --button-up-bg: white;
 }
 * {
   font-family: sans-serif;

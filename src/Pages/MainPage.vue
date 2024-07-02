@@ -1,6 +1,7 @@
 <template>
   <div class="main-page_block">
     <div class="input_block">
+      {{ tg.initDataUnsafe.user }}
       <input
         type="text"
         class="input_main"
@@ -55,6 +56,8 @@ import MainGuides from "@/components/MineGuides.vue";
 import TopGuides from "@/components/TopGuides.vue";
 
 const currentInfo = ref("Top Picks");
+
+let tg = window.Telegram.WebApp;
 </script>
 
 <style lang="scss">

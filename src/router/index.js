@@ -6,8 +6,8 @@ const routes = [
     component: () => import("../Pages/MainPage.vue"),
   },
   {
-    path: "/next",
-    component: () => import("../Pages/NextPage.vue"),
+    path: "/add",
+    component: () => import("../Pages/AddPage.vue"),
   },
   {
     path: "/guide/:id",

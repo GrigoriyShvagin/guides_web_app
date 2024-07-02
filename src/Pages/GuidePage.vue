@@ -25,18 +25,28 @@
             <span
               ><Icon
                 icon="solar:alt-arrow-right-line-duotone"
-                :class="{ activeArrow: currChap == item.id }"
+                :class="{ activeArrow: currChap.includes(item.id) }"
             /></span>
           </p>
           <Transition
-            ><div
-              class="item_content"
-              v-if="currChap == item.id"
-              v-html="item.content"
-            ></div
+            ><div class="item_content" v-if="currChap.includes(item.id)">
+              <img
+                v-if="item.content.img"
+                :src="item.content.img"
+                alt=""
+                srcset=""
+              />
+              <p>{{ item.content.text }}</p>
+              <video v-if="item.content.video" controls>
+                <source :src="item.content.video" />
+              </video></div
           ></Transition>
         </div>
       </div>
+    </div>
+    <div class="button_up" @click="scroll">
+      <Icon icon="solar:alt-arrow-right-line-duotone" />
+      <p>Наверх</p>
     </div>
   </div>
 </template>
@@ -44,7 +54,8 @@
 <script setup>
 import { ref } from "vue";
 import { Icon } from "@iconify/vue";
-const currChap = ref(null);
+
+const currChap = ref([]);
 const currentGuide = {
   name: "Cоздаем своего тг-бота за час",
   mainImg:
@@ -57,43 +68,88 @@ const currentGuide = {
     {
       id: 1,
       name: "Вступление, основы",
-      content:
-        "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
+      content: {
+        text: "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
+        img: "https://www.funnyart.club/uploads/posts/2022-12/1671309642_www-funnyart-club-p-kartinki-s-krasivim-fonom-krasivo-15.jpg",
+        video: "/video/video.mp4",
+      },
     },
     {
       id: 2,
       name: "Вступление, основы",
-      content:
-        "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
+      content: {
+        text: "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
+        img: "https://www.funnyart.club/uploads/posts/2022-12/1671309642_www-funnyart-club-p-kartinki-s-krasivim-fonom-krasivo-15.jpg",
+        video: "",
+      },
     },
     {
       id: 3,
       name: "Вступление, основы",
-      content:
-        "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
+      content: {
+        text: "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
+        img: "",
+        video: "/video/video.mp4",
+      },
     },
     {
       id: 4,
       name: "Вступление, основы",
-      content:
-        "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
+      content: {
+        text: "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
+        img: "",
+        video: "",
+      },
     },
   ],
 };
 
+function scroll() {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
 function checkCurrChap(id) {
-  if (currChap.value == id) {
-    currChap.value = null;
+  if (currChap.value.includes(id)) {
+    for (let i = 0; i < currChap.value.length; i++) {
+      currChap.value[i] == id ? currChap.value.splice(i, 1) : 0;
+    }
   } else {
-    currChap.value = id;
+    currChap.value.push(id);
   }
 }
 </script>
 
 <style scoped lang="scss">
+.button_up {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 90px;
+  margin: 10px 0 0 20px;
+  padding: 10px 10px;
+  background: white;
+  p,
+  svg {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 700;
+
+    color: var(--button-up-color);
+  }
+
+  border-radius: 10px;
+  svg {
+    width: 20px;
+    height: 20px;
+    rotate: (-90deg);
+  }
+}
+.content {
+  position: relative;
+}
 .v-enter-active,
 .v-leave-active {
-  transition: opacity 0.3s;
+  transition: 0.5s ease;
 }
 
 .v-enter-from,
@@ -134,6 +190,17 @@ function checkCurrChap(id) {
     .item_content {
       padding-bottom: 10px;
       color: var(--text-gray);
+      img {
+        width: 100%;
+        border-radius: 15px;
+        max-height: 200px;
+      }
+      p {
+        color: var(--text-gray);
+      }
+      video {
+        width: 100%;
+      }
     }
   }
 }

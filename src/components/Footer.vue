@@ -57,23 +57,36 @@ import { defineComponent } from "vue";
     align-items: center;
     justify-content: center;
     margin-top: 5px;
-    margin-left: 15px;
     padding: 0px 6vw;
     color: #ffffff;
     font-size: 12px;
     border-radius: 4px;
-    :last-of-type {
-      margin-right: 15px;
-    }
     span {
       display: block;
     }
   }
 }
 .active {
-  svg,
-  span {
-    color: var(--active-footer);
+  svg {
+    padding: 2px 10px;
+    background: var(--active-footer);
+    color: var(--button-up-bg);
+    border-radius: 20px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .icon_block {
+    margin-left: 13px;
+  }
+}
+@media screen and (min-width: 360px) and (max-width: 390px) {
+  .icon_block {
+    margin-left: 17px;
+  }
+}
+@media screen and (min-width: 390px) {
+  .icon_block {
+    margin-left: 4vw;
   }
 }
 </style>
