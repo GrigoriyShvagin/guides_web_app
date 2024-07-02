@@ -15,11 +15,19 @@ const layout = computed(() => AppLayout);
 body {
   margin: 0;
 }
+a {
+  color: inherit;
+  text-decoration: none;
+}
 :root {
   --main-bg: #0d0d0d;
   --bg-gray: #2f2f2f;
   --bg-buttons: #454444;
   --active-footer: #0d99ff;
+  --text-gray: #a2a2a2;
+  --text-white: #e6e6e6;
+  --text-link: #00d1ff;
+  --border-gray: #757575;
 }
 * {
   font-family: sans-serif;

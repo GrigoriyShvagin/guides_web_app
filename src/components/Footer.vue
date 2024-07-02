@@ -37,14 +37,14 @@ import { defineComponent } from "vue";
 .footer_block {
   width: 100vw;
   background: var(--bg-gray);
-  height: 70px;
+  height: 55px;
   padding-bottom: 10px;
   display: flex;
   justify-content: space-around;
   svg {
     color: #ffffff;
-    height: 25px;
-    width: 25px;
+    height: 22px;
+    width: 22px;
     margin-bottom: 5px;
     transition: 0.3s;
   }

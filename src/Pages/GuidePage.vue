@@ -8,27 +8,34 @@
         {{ currentGuide.name }}
       </p>
     </div>
-    <p class="decription">Описание : {{ currentGuide.description }}</p>
-    <p class="author">Автор : @{{ currentGuide.author }}</p>
-    <p class="categories">
-      Категории : {{ currentGuide.categories?.join(" / ") }}
-    </p>
-    <div class="chapters_list" v-if="currentGuide.chaptersList != null">
-      <div
-        class="chapter"
-        v-for="item in currentGuide.chaptersList"
-        :key="item.id"
-      >
-        <p class="item_name" @click="checkCurrChap(item.id)">
-          Глава {{ item.id }}: {{ item.name }}
-        </p>
-        <Transition
-          ><div
-            class="item_content"
-            v-if="currChap == item.id"
-            v-html="item.content"
-          ></div
-        ></Transition>
+    <div class="text-content">
+      <p class="categories">
+        Категории : {{ currentGuide.categories?.join(" / ") }}
+      </p>
+      <p class="decription">{{ currentGuide.description }}</p>
+      <p class="author">Автор : @{{ currentGuide.author }}</p>
+      <div class="chapters_list" v-if="currentGuide.chaptersList != null">
+        <div
+          class="chapter"
+          v-for="item in currentGuide.chaptersList"
+          :key="item.id"
+        >
+          <p class="item_name" @click="checkCurrChap(item.id)">
+            Глава {{ item.id }}: {{ item.name }}
+            <span
+              ><Icon
+                icon="solar:alt-arrow-right-line-duotone"
+                :class="{ activeArrow: currChap == item.id }"
+            /></span>
+          </p>
+          <Transition
+            ><div
+              class="item_content"
+              v-if="currChap == item.id"
+              v-html="item.content"
+            ></div
+          ></Transition>
+        </div>
       </div>
     </div>
   </div>
@@ -36,6 +43,7 @@
 
 <script setup>
 import { ref } from "vue";
+import { Icon } from "@iconify/vue";
 const currChap = ref(null);
 const currentGuide = {
   name: "Cоздаем своего тг-бота за час",
@@ -52,6 +60,24 @@ const currentGuide = {
       content:
         "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
     },
+    {
+      id: 2,
+      name: "Вступление, основы",
+      content:
+        "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
+    },
+    {
+      id: 3,
+      name: "Вступление, основы",
+      content:
+        "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
+    },
+    {
+      id: 4,
+      name: "Вступление, основы",
+      content:
+        "lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem lorem",
+    },
   ],
 };
 
@@ -64,16 +90,64 @@ function checkCurrChap(id) {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 0.3s;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+.text-content {
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 300;
+  .categories {
+    font-size: 12px;
+    color: var(--text-gray);
+  }
+  .description {
+    color: var(--text-white);
+  }
+  .author {
+    color: var(--text-link);
+    padding: 0 0 10px 0;
+    border-bottom: 1px solid var(--border-gray);
+  }
+  .chapter {
+    transition: 0.3s;
+    border-bottom: 1px solid var(--border-gray);
+    .item_name {
+      color: var(--text-gray);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-right: 10px;
+
+      svg {
+        height: 20px;
+        transition: 0.3s;
+      }
+    }
+    .item_content {
+      padding-bottom: 10px;
+      color: var(--text-gray);
+    }
+  }
+}
 .header {
-  height: 250px;
-  font-size: 32px;
+  height: 300px;
+  font-size: 26px;
   background-size: cover;
+  background-position: 50%;
   font-weight: 700;
   position: relative;
+  border-radius: 0 0 30px 30px;
   p {
     position: absolute;
-    top: 150px;
+    top: 230px;
     margin: 0px;
     left: 20px;
   }
@@ -85,5 +159,8 @@ function checkCurrChap(id) {
 }
 * {
   color: white;
+}
+.activeArrow {
+  transform: rotate(90deg);
 }
 </style>

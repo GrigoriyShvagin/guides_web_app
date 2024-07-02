@@ -115,7 +115,6 @@ const currentInfo = ref("Top Picks");
 }
 
 .featured_block {
-  margin-bottom: 100px;
   display: flex;
   flex-direction: column;
   color: rgba(255, 255, 255, 0.76);

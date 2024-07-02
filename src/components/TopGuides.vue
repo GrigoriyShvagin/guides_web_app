@@ -5,11 +5,11 @@
       Список обновляется каждый месяц, начиная с 15 числа
     </p>
     <div class="list_items">
-      <div
+      <a
+        :href="`/guide/` + item.id"
         class="curr_item"
         v-for="item in listItems"
         :key="item.id"
-        @click="$router.push(`/guide/${item.id}`)"
       >
         <img :src="item.img" alt="" />
         <div class="item_text">
@@ -21,7 +21,7 @@
           </div>
           <a :href="item.link">@{{ item.Author }}</a>
         </div>
-      </div>
+      </a>
     </div>
   </div>
 </template>
