@@ -9,7 +9,7 @@
       <span>Главная</span>
     </div>
     <div
-      class="icon_block"
+      class="icon_block add"
       @click="$router.push('/add')"
       :class="{ active: $route.path == '/add' || $route.path == '/add_form' }"
     >
@@ -40,7 +40,7 @@ import { defineComponent } from "vue";
   height: 55px;
   padding-bottom: 10px;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   svg {
     color: #ffffff;
     height: 22px;
@@ -57,10 +57,14 @@ import { defineComponent } from "vue";
     align-items: center;
     justify-content: center;
     margin-top: 5px;
+    margin-left: 15px;
     padding: 0px 6vw;
     color: #ffffff;
     font-size: 12px;
     border-radius: 4px;
+    :last-of-type {
+      margin-right: 15px;
+    }
     span {
       display: block;
     }

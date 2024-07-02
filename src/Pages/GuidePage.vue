@@ -150,6 +150,7 @@ function checkCurrChap(id) {
     top: 230px;
     margin: 0px;
     left: 20px;
+    right: 10px;
   }
   img {
     height: 250px;
