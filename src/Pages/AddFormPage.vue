@@ -4,6 +4,7 @@
     <form
       class="input_form"
       v-if="currCon == 'MainPage'"
+      @click="changeBlur($event)"
       @submit.prevent="setGuideInfo"
     >
       <p class="text_img">Фото гайда</p>
@@ -65,7 +66,7 @@
         </p>
       </div>
       <div class="button_block">
-        <button type="submit">Далее</button>
+        <button type="submit" @click="changeBlur">Далее</button>
       </div>
     </form>
     <form v-if="currCon == 'ChapterPage'">
@@ -97,6 +98,11 @@ function onFileChange() {
   const file = image.value.files[0];
   guide.value.image = image.value.files[0];
   url.value = file ? URL.createObjectURL(file) : null;
+}
+function changeBlur(e) {
+  if (!e.target.localName == "textarea" || !e.target.localName == "input") {
+    document.activeElement.blur();
+  }
 }
 function setCategory(text) {
   guide.value.categories?.length < 3 && text
