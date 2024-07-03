@@ -13,6 +13,10 @@ const routes = [
     path: "/guide/:id",
     component: () => import("../Pages/GuidePage.vue"),
   },
+  {
+    path: "/add_form",
+    component: () => import("../Pages/AddFormPage.vue"),
+  },
 ];
 
 const router = createRouter({

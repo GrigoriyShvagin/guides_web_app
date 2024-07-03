@@ -211,7 +211,6 @@ function checkCurrChap(id) {
   background-position: 50%;
   font-weight: 700;
   position: relative;
-  border-radius: 0 0 30px 30px;
   p {
     position: absolute;
     top: 230px;
@@ -222,7 +221,6 @@ function checkCurrChap(id) {
   img {
     height: 250px;
     width: 100%;
-    border-radius: 0 0 30px 30px;
   }
 }
 * {

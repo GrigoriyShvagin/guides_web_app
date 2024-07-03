@@ -11,9 +11,7 @@
       >
     </div>
     <div class="button_block">
-      <router-link to="/add_form"
-        ><Icon icon="simple-line-icons:plus" />Создать гайд</router-link
-      >
+      <a href="/add_form"><Icon icon="simple-line-icons:plus" />Создать гайд</a>
     </div>
   </div>
 </template>
@@ -32,7 +30,6 @@ import { Icon } from "@iconify/vue";
   img {
     height: 300px;
     width: 100vw;
-    border-radius: 0 0 30px 30px;
   }
   .text_content {
     padding: 0 20px;
