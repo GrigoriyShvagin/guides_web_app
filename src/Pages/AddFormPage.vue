@@ -199,6 +199,7 @@ function setGuideInfo() {
 }
 .content {
   padding: 20px;
+  margin-bottom: 100px;
   color: var(--button-up-bg);
   .header {
     margin: 20px 0;
