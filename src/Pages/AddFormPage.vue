@@ -1,12 +1,11 @@
 <template>
-  <div class="content">
-    <div class="header">Создание гайда</div>
+  <div class="content" @click="changeBlur($event)">
     <form
       class="input_form"
       v-if="currCon == 'MainPage'"
-      @click="changeBlur($event)"
       @submit.prevent="setGuideInfo"
     >
+      <div class="header">Создание гайда</div>
       <p class="text_img">Фото гайда</p>
       <div class="form_block">
         <div
@@ -69,8 +68,61 @@
         <button type="submit" @click="changeBlur">Далее</button>
       </div>
     </form>
-    <form v-if="currCon == 'ChapterPage'">
-      <button type="submit" @submit.prevent="console.log(guide)"></button>
+    <form
+      class="input_form"
+      v-if="currCon == 'ChapterPage'"
+      @submit.prevent="setChapter"
+    >
+      <div class="header">Глава {{ guide.chaptersList?.length + 1 }}</div>
+      <p class="name_input">
+        Название главы <span>{{ chapter.name.length }} / 15</span>
+      </p>
+      <input type="text" v-model="chapter.name" maxlength="15" required />
+
+      <p class="name_input">Видео</p>
+      <div
+        class="videoInput_block"
+        ref="videoInputBLock"
+        @click="$refs.inputVideo.click()"
+      >
+        <div class="video_text_content" v-if="!chapter.video">
+          Загрузите видео (до 20мб, mp4, avi)
+          <Icon icon="solar:download-outline" />
+        </div>
+        <div class="video_text_content" v-else>{{ chapter.video.name }}</div>
+      </div>
+      <input
+        type="file"
+        ref="inputVideo"
+        id="inputVideo"
+        hidden
+        @input="setInputVideo"
+      />
+
+      <p class="name_input">Фото</p>
+      <div
+        class="videoInput_block Photo_block"
+        ref="photoInputBLock"
+        @click="$refs.inputPhoto.click()"
+      >
+        <div class="photo_text_content" v-if="!chapter.image">
+          Загрузите фото (до 20мб jpeg,png)
+          <Icon icon="solar:download-outline" />
+        </div>
+        <div class="photo_text_content" v-else>{{ chapter.image.name }}</div>
+      </div>
+      <input
+        type="file"
+        ref="inputPhoto"
+        id="inputPhoto"
+        @input="setInputImage"
+        hidden
+      />
+      <p class="name_input">
+        Описание <span>{{ chapter.description?.length }} / 80</span>
+      </p>
+      <textarea type="text" maxlength="80" v-model="chapter.description" />
+      <button type="submit">upload</button>
     </form>
   </div>
 </template>
@@ -79,8 +131,11 @@
 import { Icon } from "@iconify/vue";
 import { ref } from "vue";
 
+let tg = window.Telegram.WebApp;
+
 const guide = ref({
   name: "",
+  author: tg.initDataUnsafe.user?.id,
   image: null,
   description: "",
   price: "",
@@ -89,21 +144,60 @@ const guide = ref({
 });
 
 let currCategory = ref("");
+const bites = 167772160 / 8;
 let image = ref(null);
 let url = ref("");
-let currCon = ref("MainPage");
-let imageInput = ref();
+let currCon = ref("ChapterPage");
+let imageInput = ref(); //mainPage
+let inputVideo = ref(null);
+let inputPhoto = ref(null); //chapterPage
+
+let chapter = ref({ name: "", video: null, image: null, description: "" });
+
+let videoInputBLock = ref();
+let photoInputBLock = ref();
 
 function onFileChange() {
   const file = image.value.files[0];
-  guide.value.image = image.value.files[0];
+  guide.value.image = file;
   url.value = file ? URL.createObjectURL(file) : null;
 }
+
+function setChapter() {
+  guide.value.chaptersList.push(chapter.value);
+  chapter.value = { name: "", video: null, image: null, description: "" };
+  inputPhoto.value.files = null;
+  inputVideo.value.files = null;
+}
+
+function setInputVideo() {
+  const classList = videoInputBLock.value.classList;
+  classList.remove("redColor");
+
+  const file = inputVideo.value.files[0];
+  const isVideo = file.type == "video/mp4" || file.type == "video/avi";
+  const isSizeSmall = file.size < bites;
+  chapter.value.video =
+    isVideo && isSizeSmall ? file : classList.add("redColor");
+}
+
+function setInputImage() {
+  const classList = photoInputBLock.value.classList;
+  classList.remove("redColor");
+
+  const file = inputPhoto.value.files[0];
+  const isPhoto = file.type == "image/png" || file.type == "image/jpeg";
+  const isSizeSmall = file.size < bites / 10;
+  chapter.value.image =
+    isPhoto && isSizeSmall ? file : classList.add("redColor");
+}
+
 function changeBlur(e) {
   if (!e.target.localName == "textarea" || !e.target.localName == "input") {
     document.activeElement.blur();
   }
 }
+
 function setCategory(text) {
   guide.value.categories?.length < 3 && text
     ? guide.value.categories.push(text)
@@ -178,6 +272,45 @@ function setGuideInfo() {
       font-weight: 700;
     }
   }
+  .videoInput_block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: var(--text-gray);
+    padding: 30px;
+    font-size: 14px;
+    border-radius: 20px;
+    background: var(--button-up-color);
+    .video_text_content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    svg {
+      width: 24px;
+      height: 24px;
+      margin-top: 10px;
+      color: var(--button-up-bg);
+    }
+  }
+  .Photo_block {
+    flex-direction: row;
+    justify-content: space-between;
+    .photo_text_content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    padding: 15px 40px;
+    svg {
+      width: 16px;
+      height: 16px;
+      margin: 0 0 0 10px;
+    }
+  }
 }
 .form_block {
   position: relative;
@@ -205,7 +338,7 @@ function setGuideInfo() {
 }
 .content {
   padding: 20px;
-  margin-bottom: 100px;
+  margin-bottom: 200px;
   color: var(--button-up-bg);
   .header {
     margin: 20px 0;
@@ -245,6 +378,12 @@ function setGuideInfo() {
   img {
     max-width: 100%;
     max-height: 500px;
+  }
+}
+.redColor {
+  color: red !important;
+  svg {
+    color: red !important;
   }
 }
 .red {
