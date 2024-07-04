@@ -157,6 +157,11 @@ let chapter = ref({ name: "", video: null, image: null, description: "" });
 let videoInputBLock = ref();
 let photoInputBLock = ref();
 
+function zeroiz() {
+  chapter.value = { name: "", video: null, image: null, description: "" };
+  [inputPhoto.value.value, inputVideo.value.value] = [null, null];
+}
+
 function onFileChange() {
   const file = image.value.files[0];
   guide.value.image = file;
@@ -165,9 +170,7 @@ function onFileChange() {
 
 function setChapter() {
   guide.value.chaptersList.push(chapter.value);
-  chapter.value = { name: "", video: null, image: null, description: "" };
-  inputPhoto.value.files = null;
-  inputVideo.value.files = null;
+  zeroiz();
 }
 
 function setInputVideo() {
