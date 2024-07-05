@@ -10,6 +10,7 @@ defineComponent({ name: "App" });
 
 window.Telegram.WebApp.setHeaderColor("#0d0d0d");
 window.Telegram.WebApp.setBackgroundColor("#0d0d0d");
+
 const layout = computed(() => AppLayout);
 </script>
 
@@ -33,6 +34,7 @@ a {
   --border-gray: #757575;
   --button-up-color: #242424;
   --button-up-bg: white;
+  --slide-menu-bg: #1d1d1d;
 }
 * {
   font-family: sans-serif;

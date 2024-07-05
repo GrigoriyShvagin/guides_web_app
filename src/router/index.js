@@ -17,6 +17,10 @@ const routes = [
     path: "/add_form",
     component: () => import("../Pages/AddFormPage.vue"),
   },
+  {
+    path: "/earn",
+    component: () => import("../Pages/ProfilePage.vue"),
+  },
 ];
 
 const router = createRouter({

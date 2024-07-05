@@ -9,7 +9,7 @@ import FooterSection from "@/components/Footer.vue";
 
 <style lang="scss">
 .router-view {
-  margin-bottom: 85px;
+  padding-bottom: 85px;
 }
 body {
   background: var(--main-bg);

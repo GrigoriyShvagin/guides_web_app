@@ -122,7 +122,11 @@
         Описание <span>{{ chapter.description?.length }} / 80</span>
       </p>
       <textarea type="text" maxlength="80" v-model="chapter.description" />
-      <button type="submit">upload</button>
+      <div class="buttons_block">
+        <button type="button" @click="currCon = 'MainPage'">Назад</button
+        ><button type="submit">Добавить главу</button>
+      </div>
+      <button type="button" class="endButton">Завершить</button>
     </form>
   </div>
 </template>
@@ -147,7 +151,7 @@ let currCategory = ref("");
 const bites = 167772160 / 8;
 let image = ref(null);
 let url = ref("");
-let currCon = ref("ChapterPage");
+let currCon = ref("MainPage");
 let imageInput = ref(); //mainPage
 let inputVideo = ref(null);
 let inputPhoto = ref(null); //chapterPage
@@ -216,6 +220,29 @@ function setGuideInfo() {
 </script>
 
 <style lang="scss" scoped>
+.endButton {
+  margin-top: 10px;
+  width: 100%;
+  background: var(--active-footer);
+  font-size: 16px;
+  font-weight: 700;
+  padding: 10px 20px;
+  border-radius: 10px;
+  color: var(--text-white);
+}
+.buttons_block {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  button {
+    width: 48%;
+    background: var(--button-up-bg);
+    padding: 10px 20px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+  }
+}
 .input_form {
   width: 100%;
   input,
