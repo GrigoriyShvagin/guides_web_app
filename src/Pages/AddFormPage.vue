@@ -227,6 +227,7 @@ function setGuideInfo() {
   font-size: 16px;
   font-weight: 700;
   padding: 10px 20px;
+  border: none;
   border-radius: 10px;
   color: var(--text-white);
 }
@@ -237,6 +238,7 @@ function setGuideInfo() {
   button {
     width: 48%;
     background: var(--button-up-bg);
+    color: var(--text-black);
     padding: 10px 20px;
     border-radius: 10px;
     font-size: 14px;
