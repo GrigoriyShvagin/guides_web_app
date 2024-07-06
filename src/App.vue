@@ -11,7 +11,6 @@ defineComponent({ name: "App" });
 window.Telegram.WebApp.setHeaderColor("#0d0d0d");
 window.Telegram.WebApp.setBackgroundColor("#0d0d0d");
 window.Telegram.WebApp.themeParams = {
-  section_bg_color: "#0d0d0d",
   secondary_bg_color: "#0d0d0d",
 };
 
