@@ -10,8 +10,8 @@ defineComponent({ name: "App" });
 
 const tg = window.Telegram.WebApp;
 tg.setHeaderColor("#0d0d0d");
-tg.setBackgroundColor("#ffc0cb");
-tg.backgroundColor = "#ffc0cb";
+tg.setBackgroundColor("#2f2f2f");
+tg.backgroundColor = "#2f2f2f";
 
 const layout = computed(() => AppLayout);
 </script>
