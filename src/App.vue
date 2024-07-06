@@ -9,7 +9,10 @@ import AppLayout from "./Layouts/AppLayout.vue";
 defineComponent({ name: "App" });
 
 const tg = window.Telegram.WebApp;
-if (localStorage.getItem("theme") == "dark") {
+if (
+  localStorage.getItem("theme") == "dark" ||
+  localStorage.getItem("theme") == null
+) {
   tg.setHeaderColor("#0d0d0d");
   tg.setBackgroundColor("#2f2f2f");
   tg.backgroundColor = "#2f2f2f";
