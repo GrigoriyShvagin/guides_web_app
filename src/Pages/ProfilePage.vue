@@ -109,7 +109,7 @@
 
 <script setup>
 import { Icon } from "@iconify/vue";
-import { ref } from "vue";
+import { ref, watch } from "vue";
 
 const profileInfo = {
   image: "/profile.png",
@@ -156,9 +156,27 @@ const profileInfo = {
   },
 };
 
-const theme = ref(true);
+const theme = localStorage.getItem("theme") == "dark" ? ref(true) : ref(false);
 const currLang = ref("russian");
 const settings = ref(false);
+const tg = window.Telegram.WebApp;
+
+watch(theme, () => {
+  const doc = document.documentElement;
+  if (theme.value == true) {
+    doc.setAttribute("theme", "dark");
+    localStorage.setItem("theme", "dark");
+    tg.setHeaderColor("#0d0d0d");
+    tg.setBackgroundColor("#2f2f2f");
+    tg.backgroundColor = "#2f2f2f";
+  } else {
+    doc.setAttribute("theme", "light");
+    localStorage.setItem("theme", "light");
+    tg.setHeaderColor("#fcfcfc");
+    tg.setBackgroundColor("#fcfcfc");
+    tg.backgroundColor = "#fcfcfc";
+  }
+});
 </script>
 
 <style lang="scss" scoped>

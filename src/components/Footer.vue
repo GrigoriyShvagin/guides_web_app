@@ -36,13 +36,13 @@ import { defineComponent } from "vue";
 <style lang="scss" scoped>
 .footer_block {
   width: 100vw;
-  background: var(--bg-gray);
+  background: var(--bg-footer);
   height: 55px;
   padding-bottom: 10px;
   display: flex;
   justify-content: space-between;
   svg {
-    color: #ffffff;
+    color: var(--text-white);
     height: 22px;
     width: 22px;
     margin-bottom: 5px;
@@ -58,7 +58,7 @@ import { defineComponent } from "vue";
     justify-content: center;
     margin-top: 5px;
     padding: 0px 6vw;
-    color: #ffffff;
+    color: var(--text-white);
     font-size: 12px;
     border-radius: 4px;
     span {

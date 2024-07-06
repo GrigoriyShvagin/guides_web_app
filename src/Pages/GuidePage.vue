@@ -12,7 +12,7 @@
       <p class="categories">
         Категории : {{ currentGuide.categories?.join(" / ") }}
       </p>
-      <p class="decription">{{ currentGuide.description }}</p>
+      <p class="description">Описание: {{ currentGuide.description }}</p>
       <p class="author">Автор : @{{ currentGuide.author }}</p>
       <div class="chapters_list" v-if="currentGuide.chaptersList != null">
         <div
@@ -127,14 +127,14 @@ function checkCurrChap(id) {
   width: 90px;
   margin: 10px 0 0 20px;
   padding: 10px 10px;
-  background: white;
+  background: var(--active-info-bg);
   p,
   svg {
     margin: 0;
     font-size: 16px;
     font-weight: 700;
 
-    color: var(--button-up-color);
+    color: var(--active-info-text);
   }
 
   border-radius: 10px;
@@ -165,7 +165,8 @@ function checkCurrChap(id) {
     color: var(--text-gray);
   }
   .description {
-    color: var(--text-white);
+    font-weight: 500;
+    color: var(--text-gray);
   }
   .author {
     color: var(--text-link);
@@ -183,6 +184,7 @@ function checkCurrChap(id) {
       padding-right: 10px;
 
       svg {
+        color: var(--text-gray);
         height: 20px;
         transition: 0.3s;
       }

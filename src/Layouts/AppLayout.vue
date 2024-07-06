@@ -5,6 +5,12 @@
 
 <script setup>
 import FooterSection from "@/components/Footer.vue";
+import { onBeforeMount } from "vue";
+
+function setTheme() {
+  document.documentElement.setAttribute("theme", localStorage.getItem("theme"));
+}
+onBeforeMount(setTheme);
 </script>
 
 <style lang="scss">
@@ -14,6 +20,7 @@ import FooterSection from "@/components/Footer.vue";
 body {
   background: var(--main-bg);
   color: var(--tg-theme-text-color);
+  transition: ease 0.5s;
 }
 .footer {
   position: fixed;

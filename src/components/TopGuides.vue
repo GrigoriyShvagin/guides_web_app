@@ -69,9 +69,12 @@ const listItems = [
     transition: 0.5s;
   }
   .active {
-    background: white;
-    color: black;
+    background: var(--active-info-bg);
+    color: var(--active-info-text);
   }
+}
+.text_header {
+  color: var(--active-info-bg) !important;
 }
 .change_items {
   display: flex;

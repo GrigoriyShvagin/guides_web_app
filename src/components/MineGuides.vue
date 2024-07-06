@@ -133,8 +133,8 @@ const listBoughtItems = [
     transition: 0.5s;
   }
   .active {
-    background: white;
-    color: black;
+    background: var(--active-info-bg);
+    color: var(--active-info-text);
   }
 }
 .change_items {

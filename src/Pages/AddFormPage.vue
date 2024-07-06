@@ -254,7 +254,7 @@ function setGuideInfo() {
     background: var(--button-up-color);
     outline: none;
     border-radius: 15px;
-    color: white;
+    color: var(--text-white);
     border: none;
   }
   input {

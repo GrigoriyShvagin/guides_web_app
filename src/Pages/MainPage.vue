@@ -83,7 +83,7 @@ const currentInfo = ref("Top Picks");
     overflow: hidden;
   }
   .text_header {
-    color: #fff;
+    color: var(--text-white);
   }
   .text_header,
   a {
@@ -119,7 +119,7 @@ const currentInfo = ref("Top Picks");
 .featured_block {
   display: flex;
   flex-direction: column;
-  color: rgba(255, 255, 255, 0.76);
+  color: var(--text-gray);
   justify-content: center;
   align-items: center;
   p {
@@ -127,7 +127,7 @@ const currentInfo = ref("Top Picks");
     margin-bottom: 20px;
   }
   h3 {
-    color: #fff;
+    color: var(--active-info-bg);
     margin-bottom: 5px;
     font-size: 40px;
     font-weight: 100;
@@ -153,16 +153,16 @@ const currentInfo = ref("Top Picks");
     margin-right: 10px;
     border-radius: 4px;
     font-weight: 500;
-    color: #fff;
+    color: var(--text-white);
     span svg {
       color: #fff;
     }
   }
   .activeInfo {
-    background: #fff;
-    color: #000;
+    background: var(--active-info-bg);
+    color: var(--active-info-text);
     svg {
-      color: #000;
+      color: var(--active-info-text);
     }
   }
 }
@@ -174,7 +174,7 @@ const currentInfo = ref("Top Picks");
   justify-content: center;
   align-items: center;
   svg {
-    color: #a1a1a1;
+    color: var(--text-gray);
     width: 30px;
     height: 30px;
     position: absolute;
@@ -184,12 +184,13 @@ const currentInfo = ref("Top Picks");
 }
 .input_main {
   outline: none;
-  background: var(--bg-gray);
+  background: var(--bg-input);
   width: 80%;
   margin: 0 20px;
   border: none;
   border-radius: 4px;
-  color: #ffffff;
+  color: var(--text-gray);
+
   padding: 10px 20px 10px 50px;
   font-size: 16px;
 }
