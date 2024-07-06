@@ -47,11 +47,12 @@ a {
   --slide-menu-bg: #1d1d1d;
   --active-info-bg: #fff;
   --active-info-text: #000;
-  --bg-footer: #424242;
+  --bg-footer: #0d0d0d;
   --bg-input: #242424;
+  --bg-slider: #2f2f2f;
 }
 [theme="light"] {
-  --bg-footer: #ffffff;
+  --bg-footer: #e6e6e6;
   --main-bg: #fcfcfc;
   --bg-gray: #e6e6e6;
   --text-gray: #313131;
@@ -62,7 +63,8 @@ a {
   --button-up-bg: #000;
   --text-black: #fff;
   --button-up-color: #e3e3e3;
-  --slide-menu-bg: #cfcfcf;
+  --slide-menu-bg: #e6e6e6;
+  --bg-slider: #cfcfcf;
 }
 * {
   font-family: sans-serif;

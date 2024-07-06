@@ -240,7 +240,7 @@ watch(theme, () => {
           width: 50px;
           height: 25px;
           border-radius: 50px;
-          background: var(--bg-gray);
+          background: var(--bg-slider);
           position: relative;
           p {
             transition: ease 0.5s;
