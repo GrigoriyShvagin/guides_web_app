@@ -8,8 +8,10 @@ import { computed } from "vue";
 import AppLayout from "./Layouts/AppLayout.vue";
 defineComponent({ name: "App" });
 
-window.Telegram.WebApp.setHeaderColor("#0d0d0d");
-window.Telegram.WebApp.setBackgroundColor("#0d0d0d" | "#0d0d0d");
+const tg = window.Telegram.WebApp;
+tg.setHeaderColor("#0d0d0d");
+tg.setBackgroundColor("#0d0d0d");
+tg.backgroundColor = "#0d0d0d";
 
 const layout = computed(() => AppLayout);
 </script>
