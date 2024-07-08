@@ -174,7 +174,6 @@ const settings = ref(false);
 const tg = window.Telegram.WebApp;
 
 watch(currLang, () => {
-  console.log(currLang);
   localStorage.setItem("lang", currLang.value);
   currLang.value == "Русский" ? (locale.value = "ru") : (locale.value = "en");
 });

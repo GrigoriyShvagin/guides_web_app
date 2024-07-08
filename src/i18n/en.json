@@ -1,6 +1,7 @@
 {
-  "mainwInputPlaceholder": "Find the necessary guides",
-  "TopPicks": "Top 10",
+  "mainInputPlaceholder": "Find the necessary guides",
+  "TopPicks": "Featured",
+  "Guide": "Guide",
   "MyGuides": "My Guides",
   "EngRu": "Eng/ru",
   "Bought": "Bought",

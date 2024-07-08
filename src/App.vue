@@ -11,9 +11,9 @@ defineComponent({ name: "App" });
 
 const tg = window.Telegram.WebApp;
 if (localStorage.getItem("theme") == "dark") {
-  tg.setHeaderColor("#0d0d0d");
-  tg.setBackgroundColor("#2f2f2f");
-  tg.backgroundColor = "#2f2f2f";
+  tg.setHeaderColor("#000");
+  tg.setBackgroundColor("#000");
+  tg.backgroundColor = "#000";
 } else {
   tg.setHeaderColor("#fcfcfc");
   tg.setBackgroundColor("#fcfcfc");
