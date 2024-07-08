@@ -10,7 +10,7 @@ const messages = Object.assign(languages);
 const i18n = createI18n({
   legacy: false,
   fallbackLocale: "ru",
-  locale: localStorage.getItem("lang") == "Русский" ? "ru" : "en",
+  locale: localStorage.getItem("lang") == "English" ? "en" : "ru",
   messages,
 });
 
