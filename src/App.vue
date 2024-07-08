@@ -6,13 +6,11 @@
 import { defineComponent } from "vue";
 import { computed } from "vue";
 import AppLayout from "./Layouts/AppLayout.vue";
+
 defineComponent({ name: "App" });
 
 const tg = window.Telegram.WebApp;
-if (
-  localStorage.getItem("theme") == "dark" ||
-  localStorage.getItem("theme") == null
-) {
+if (localStorage.getItem("theme") == "dark") {
   tg.setHeaderColor("#0d0d0d");
   tg.setBackgroundColor("#2f2f2f");
   tg.backgroundColor = "#2f2f2f";
@@ -33,6 +31,25 @@ a {
   text-decoration: none;
 }
 :root {
+  --bg-footer: #e6e6e6;
+  --main-bg: #fcfcfc;
+  --bg-gray: #e6e6e6;
+  --text-gray: #313131;
+  --active-info-bg: #0d0d0d;
+  --active-info-text: #fff;
+  --text-white: #2a2a2a;
+  --bg-input: #e3e3e3;
+  --button-up-bg: #000;
+  --text-black: #fff;
+  --button-up-color: #e3e3e3;
+  --slide-menu-bg: #e6e6e6;
+  --bg-slider: #cfcfcf;
+  --active-footer: #0d99ff;
+  --border-gray: #757575;
+  --bg-buttons: #454444;
+  --text-link: #00d1ff;
+}
+[theme="dark"] {
   --main-bg: #0d0d0d;
   --bg-gray: #2f2f2f;
   --bg-buttons: #454444;
@@ -50,21 +67,6 @@ a {
   --bg-footer: #0d0d0d;
   --bg-input: #242424;
   --bg-slider: #2f2f2f;
-}
-[theme="light"] {
-  --bg-footer: #e6e6e6;
-  --main-bg: #fcfcfc;
-  --bg-gray: #e6e6e6;
-  --text-gray: #313131;
-  --active-info-bg: #0d0d0d;
-  --active-info-text: #fff;
-  --text-white: #2a2a2a;
-  --bg-input: #e3e3e3;
-  --button-up-bg: #000;
-  --text-black: #fff;
-  --button-up-color: #e3e3e3;
-  --slide-menu-bg: #e6e6e6;
-  --bg-slider: #cfcfcf;
 }
 * {
   font-family: sans-serif;

@@ -6,7 +6,7 @@
       :class="{ active: $route.path == '/' }"
     >
       <Icon icon="iconoir:home-simple" />
-      <span>Главная</span>
+      <span>{{ t("MainPage") }}</span>
     </div>
     <div
       class="icon_block add"
@@ -14,7 +14,7 @@
       :class="{ active: $route.path == '/add' || $route.path == '/add_form' }"
     >
       <Icon icon="simple-line-icons:plus" />
-      <span>Создать</span>
+      <span>{{ t("GuidePage") }}</span>
     </div>
     <div
       class="icon_block"
@@ -22,7 +22,7 @@
       :class="{ active: $route.path == '/earn' }"
     >
       <Icon icon="gravity-ui:shopping-bag" />
-      <span>Заработок</span>
+      <span>{{ t("EarnPage") }}</span>
     </div>
   </div>
 </template>
@@ -31,6 +31,9 @@
 defineComponent({ name: "FooterSection" });
 import { Icon } from "@iconify/vue";
 import { defineComponent } from "vue";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n({ useScope: "global" });
 </script>
 
 <style lang="scss" scoped>

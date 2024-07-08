@@ -4,7 +4,7 @@
       <input
         type="text"
         class="input_main"
-        placeholder="Найдите нужные гайды"
+        :placeholder="t('mainInputPlaceholder')"
       />
       <Icon icon="gravity-ui:magnifier" />
     </div>
@@ -15,7 +15,7 @@
           @click="currentInfo = 'Top Picks'"
           :class="{ activeInfo: currentInfo == 'Top Picks' }"
         >
-          Топ-10
+          {{ t("TopPicks") }}
         </p>
         <p
           class=""
@@ -23,21 +23,14 @@
           :class="{ activeInfo: currentInfo == 'My GPTs' }"
         >
           <Icon icon="material-symbols:star" />
-          Мои гайды
+          {{ t("MyGuides") }}
         </p>
         <p
           class=""
           @click="currentInfo = 'Featured'"
           :class="{ activeInfo: currentInfo == 'Featured' }"
         >
-          Избранное
-        </p>
-        <p
-          class=""
-          @click="currentInfo = 'Trand'"
-          :class="{ activeInfo: currentInfo == 'Trand' }"
-        >
-          Новые
+          {{ t("EngRu") }}
         </p>
       </div>
     </div>
@@ -53,6 +46,9 @@ import { Icon } from "@iconify/vue";
 import { ref } from "vue";
 import MainGuides from "@/components/MineGuides.vue";
 import TopGuides from "@/components/TopGuides.vue";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n({ useScope: "global" });
 
 const currentInfo = ref("Top Picks");
 

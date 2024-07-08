@@ -2,7 +2,7 @@
   <div class="content">
     <img src="/constructor.jpeg" alt="" />
     <div class="text_content">
-      <p class="header">Создать гайд</p>
+      <p class="header">{{ t("CreateGuide") }}</p>
       <span
         >Lorem ipsum, dolor sit amet consectetur adipisicing elit. Placeat odio
         ut beatae assumenda fugiat tempore in amet repellendus nihil veniam?
@@ -11,13 +11,18 @@
       >
     </div>
     <div class="button_block">
-      <a href="/add_form"><Icon icon="simple-line-icons:plus" />Создать гайд</a>
+      <a href="/add_form"
+        ><Icon icon="simple-line-icons:plus" />{{ t("CreateGuide") }}</a
+      >
     </div>
   </div>
 </template>
 
 <script setup>
 import { Icon } from "@iconify/vue";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n({ useScope: "global" });
 </script>
 
 <style lang="scss" scoped>

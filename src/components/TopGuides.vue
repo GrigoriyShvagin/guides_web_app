@@ -1,8 +1,8 @@
 <template>
   <div class="featured_content">
-    <h3>Топ-10</h3>
+    <h3>{{ t("TopPicks") }}</h3>
     <p class="header_discr">
-      Список обновляется каждый месяц, начиная с 15 числа
+      {{ t("TopPicksDesc") }}
     </p>
     <div class="list_items">
       <a
@@ -12,7 +12,7 @@
         :key="item.id"
       >
         <img :src="item.img" alt="" />
-        <div class="item_text">
+        <div clasf="item_text">
           <div class="text_header">
             {{ item.title }}
           </div>
@@ -27,6 +27,10 @@
 </template>
 
 <script setup>
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n({ useScope: "global" });
+
 const listItems = [
   {
     id: 1,

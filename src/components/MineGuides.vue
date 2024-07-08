@@ -1,6 +1,6 @@
 <template>
   <div class="featured_content">
-    <h3>Мои гайды</h3>
+    <h3>{{ t("MyGuides") }}</h3>
     <div class="block_change">
       <div class="change_items">
         <div
@@ -8,14 +8,14 @@
           @click="changeMenu = 'Bought'"
           :class="{ active: changeMenu == 'Bought' }"
         >
-          Купленные
+          {{ t("Bought") }}
         </div>
         <div
           class="item"
           @click="changeMenu = 'Mine'"
           :class="{ active: changeMenu == 'Mine' }"
         >
-          Собственные
+          {{ t("Mine") }}
         </div>
       </div>
     </div>
@@ -58,6 +58,10 @@
 <script setup>
 import { ref } from "vue";
 const changeMenu = ref("Bought");
+
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n({ useScope: "global" });
 
 const listItems = [
   {

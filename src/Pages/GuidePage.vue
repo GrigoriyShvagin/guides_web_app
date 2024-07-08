@@ -10,10 +10,12 @@
     </div>
     <div class="text-content">
       <p class="categories">
-        Категории : {{ currentGuide.categories?.join(" / ") }}
+        {{ t("GuideCategories") }}: {{ currentGuide.categories?.join(" / ") }}
       </p>
-      <p class="description">Описание: {{ currentGuide.description }}</p>
-      <p class="author">Автор : @{{ currentGuide.author }}</p>
+      <p class="description">
+        {{ t("GuideDescription") }}: {{ currentGuide.description }}
+      </p>
+      <p class="author">{{ t("GuideAuthor") }}: @{{ currentGuide.author }}</p>
       <div class="chapters_list" v-if="currentGuide.chaptersList != null">
         <div
           class="chapter"
@@ -21,7 +23,7 @@
           :key="item.id"
         >
           <p class="item_name" @click="checkCurrChap(item.id)">
-            Глава {{ item.id }}: {{ item.name }}
+            {{ t("Chapter") }} {{ item.id }}: {{ item.name }}
             <span
               ><Icon
                 icon="solar:alt-arrow-right-line-duotone"
@@ -46,7 +48,7 @@
     </div>
     <div class="button_up" @click="scroll">
       <Icon icon="solar:alt-arrow-right-line-duotone" />
-      <p>Наверх</p>
+      <p>{{ t("Up") }}</p>
     </div>
   </div>
 </template>
@@ -54,6 +56,9 @@
 <script setup>
 import { ref } from "vue";
 import { Icon } from "@iconify/vue";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n({ useScope: "global" });
 
 const currChap = ref([]);
 const currentGuide = {

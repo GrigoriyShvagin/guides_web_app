@@ -3,17 +3,21 @@
     <div class="balance_block">
       <div class="balance_info">
         <p class="">
-          Баланс <span> <Icon icon="simple-icons:ton" />15 </span>
+          {{ t("Balance") }} <span> <Icon icon="simple-icons:ton" />15 </span>
         </p>
         <Icon icon="solar:settings-linear" @click="settings = true" />
       </div>
       <div class="balance_buttons">
-        <button type="button" class="blue_button">Подключить кошелек</button>
-        <button type="button" class="white_button">Вывести средства</button>
+        <button type="button" class="blue_button">
+          {{ t("ConnectWallet") }}
+        </button>
+        <button type="button" class="white_button">
+          {{ t("WithdrawFunds") }}
+        </button>
       </div>
     </div>
     <div class="profile_block">
-      <div class="profile">Профиль <Icon icon="lucide:edit" /></div>
+      <div class="profile">{{ t("Profile") }} <Icon icon="lucide:edit" /></div>
       <div class="profile_info">
         <div
           :style="{ backgroundImage: 'url(' + profileInfo.image + ')' }"
@@ -21,7 +25,9 @@
         ></div>
         <div class="profile_content">
           <p class="header">{{ profileInfo.name }}</p>
-          <p class="description">Описание: {{ profileInfo.description }}</p>
+          <p class="description">
+            {{ t("GuideDescription") }} {{ profileInfo.description }}
+          </p>
           <p class="link">
             {{ profileInfo.link.name }}: {{ profileInfo.link.url }}
           </p>
@@ -29,23 +35,25 @@
       </div>
     </div>
     <div class="guides_block">
-      <p class="header">Мои гайды</p>
+      <p class="header">{{ t("MyGuides") }}</p>
       <div class="guides_list">
         <div class="guide" v-for="item in profileInfo.guides" :key="item">
           <div class="top_block">
             <img class="image" :src="item.image" />
             <p>
-              <span class="dots">...</span><span>Гайд: {{ item.name }}</span>
+              <span class="dots">...</span
+              ><span>{{ t("Guide") }} {{ item.name }}</span>
             </p>
           </div>
           <div class="bottom_block">
-            <p class="stat">Статистика</p>
+            <p class="stat">{{ t("Statistic") }}</p>
             <div class="info">
               <p class="">
-                Заработано всего: <span>{{ item.statistic.all }}</span>
+                {{ t("EarnedTotal") }}: <span>{{ item.statistic.all }}</span>
               </p>
               <p class="">
-                Заработано за неделю: <span>{{ item.statistic.perWeek }}</span>
+                {{ t("EarnedPerWeek") }}:
+                <span>{{ item.statistic.perWeek }}</span>
               </p>
             </div>
           </div>
@@ -53,9 +61,9 @@
       </div>
     </div>
     <div class="referal_block">
-      <div class="header">Рефералы</div>
+      <div class="header">{{ t("Referals") }}</div>
       <p class="">
-        <span>Реферальная ссылка</span
+        <span>{{ t("ReferalLink") }}</span
         ><span class="blue"
           >{{ profileInfo.referal.link }}<Icon icon="basil:copy-outline"
         /></span>
@@ -74,34 +82,34 @@
             <span class="blue"
               ><Icon icon="simple-icons:ton" /> +{{ item.statPerWeek }}</span
             >
-            за неделю
+            {{ t("PerWeek") }}
           </div>
         </div>
       </div>
     </div>
     <div class="slide_menu" :class="{ slide: settings == true }">
       <p class="header">
-        Настройки
+        {{ t("Settings") }}
         <Icon icon="material-symbols:close" @click="settings = false" />
       </p>
       <div class="lang">
         <div class="text">
-          <Icon icon="material-symbols-light:language" />Язык
+          <Icon icon="material-symbols-light:language" />{{ t("Language") }}
         </div>
         <select name="" id="" v-model="currLang">
-          <option value="russian">Русский</option>
-          <option value="english">english</option>
+          <option>Русский</option>
+          <option>English</option>
         </select>
         <div class="theme">
-          Темная тема
+          {{ t("DarkTheme") }}
           <div class="slider" @click="theme = !theme">
             <p :class="{ off: theme == false }"></p>
           </div>
         </div>
       </div>
       <div class="politic">
-        <p class="">Политика конфиденциальности</p>
-        <p class="">Все права защищены</p>
+        <p class="">{{ t("PrivacyPolicy") }}</p>
+        <p class="">{{ t("AllRightsReserved") }}</p>
       </div>
     </div>
   </div>
@@ -110,6 +118,9 @@
 <script setup>
 import { Icon } from "@iconify/vue";
 import { ref, watch } from "vue";
+import { useI18n } from "vue-i18n";
+
+const { t, locale } = useI18n({ useScope: "global" });
 
 const profileInfo = {
   image: "/profile.png",
@@ -157,9 +168,16 @@ const profileInfo = {
 };
 
 const theme = localStorage.getItem("theme") == "dark" ? ref(true) : ref(false);
-const currLang = ref("russian");
+const currLang =
+  localStorage.getItem("lang") == "English" ? ref("English") : ref("Русский");
 const settings = ref(false);
 const tg = window.Telegram.WebApp;
+
+watch(currLang, () => {
+  console.log(currLang);
+  localStorage.setItem("lang", currLang.value);
+  currLang.value == "Русский" ? (locale.value = "ru") : (locale.value = "en");
+});
 
 watch(theme, () => {
   const doc = document.documentElement;
@@ -224,7 +242,7 @@ watch(theme, () => {
         margin: 10px 0 40px 0;
         padding: 10px 20px;
         width: 100%;
-        background: var(--button-up-color);
+        background: var(--bg-slider);
         color: var(--text-gray);
         border: none;
         border-radius: 10px;

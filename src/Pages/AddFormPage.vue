@@ -5,8 +5,8 @@
       v-if="currCon == 'MainPage'"
       @submit.prevent="setGuideInfo"
     >
-      <div class="header">Создание гайда</div>
-      <p class="text_img">Фото гайда</p>
+      <div class="header">{{ t("GuideCreating") }}</div>
+      <p class="text_img">{{ t("GuidePhoto") }}</p>
       <div class="form_block">
         <div
           class="imageInputForm"
@@ -33,11 +33,12 @@
         />
       </div>
       <p class="name_input">
-        Название <span>{{ guide.name.length }} / 20</span>
+        {{ t("GuideName") }}<span>{{ guide.name.length }} / 20</span>
       </p>
       <input type="text" maxlength="20" v-model="guide.name" required />
       <p class="name_input">
-        Описание <span>{{ guide.description.length }} / 40</span>
+        {{ t("GuideDescription") }}
+        <span>{{ guide.description.length }} / 40</span>
       </p>
       <textarea
         type="text"
@@ -46,11 +47,12 @@
         required
       />
       <p class="name_input">
-        Цена <span><Icon icon="simple-icons:ton" /></span>
+        {{ t("GuidePrice") }} <span><Icon icon="simple-icons:ton" /></span>
       </p>
       <input type="number" v-model="guide.price" required />
       <p class="name_input">
-        Категории <span>{{ guide.categories.length }} / 3</span>
+        {{ t("GuideCategories") }}
+        <span>{{ guide.categories.length }} / 3</span>
       </p>
       <div class="categories_input">
         <input maxlength="15" v-model="currCategory" />
@@ -73,20 +75,22 @@
       v-if="currCon == 'ChapterPage'"
       @submit.prevent="setChapter"
     >
-      <div class="header">Глава {{ guide.chaptersList?.length + 1 }}</div>
+      <div class="header">
+        {{ t("Chapter") }} {{ guide.chaptersList?.length + 1 }}
+      </div>
       <p class="name_input">
-        Название главы <span>{{ chapter.name.length }} / 15</span>
+        {{ t("ChapterName") }} <span>{{ chapter.name.length }} / 15</span>
       </p>
       <input type="text" v-model="chapter.name" maxlength="15" required />
 
-      <p class="name_input">Видео</p>
+      <p class="name_input">{{ t("ChapterVideo") }}</p>
       <div
         class="videoInput_block"
         ref="videoInputBLock"
         @click="$refs.inputVideo.click()"
       >
         <div class="video_text_content" v-if="!chapter.video">
-          Загрузите видео (до 20мб, mp4, avi)
+          {{ t("ChapterVideoText") }}
           <Icon icon="solar:download-outline" />
         </div>
         <div class="video_text_content" v-else>{{ chapter.video.name }}</div>
@@ -99,14 +103,14 @@
         @input="setInputVideo"
       />
 
-      <p class="name_input">Фото</p>
+      <p class="name_input">{{ t("ChapterPhoto") }}</p>
       <div
         class="videoInput_block Photo_block"
         ref="photoInputBLock"
         @click="$refs.inputPhoto.click()"
       >
         <div class="photo_text_content" v-if="!chapter.image">
-          Загрузите фото (до 20мб jpeg,png)
+          {{ t("ChapterPhotoText") }}
           <Icon icon="solar:download-outline" />
         </div>
         <div class="photo_text_content" v-else>{{ chapter.image.name }}</div>
@@ -119,14 +123,16 @@
         hidden
       />
       <p class="name_input">
-        Описание <span>{{ chapter.description?.length }} / 80</span>
+        {{ t("ChapterDescription") }}
+        <span>{{ chapter.description?.length }} / 80</span>
       </p>
       <textarea type="text" maxlength="80" v-model="chapter.description" />
       <div class="buttons_block">
-        <button type="button" @click="currCon = 'MainPage'">Назад</button
-        ><button type="submit">Добавить главу</button>
+        <button type="button" @click="currCon = 'MainPage'">
+          {{ t("Back") }}</button
+        ><button type="submit">{{ t("AddChapter") }}</button>
       </div>
-      <button type="button" class="endButton">Завершить</button>
+      <button type="button" class="endButton">{{ t("End") }}</button>
     </form>
   </div>
 </template>
@@ -134,6 +140,9 @@
 <script setup>
 import { Icon } from "@iconify/vue";
 import { ref } from "vue";
+import { useI18n } from "vue-i18n";
+
+const { t } = useI18n({ useScope: "global" });
 
 let tg = window.Telegram.WebApp;
 
