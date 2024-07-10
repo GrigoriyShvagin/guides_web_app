@@ -1,7 +1,7 @@
 <template>
   <div class="footer_block">
     <div
-      class="icon_block"
+      class="icon_block main"
       @click="$router.push('/')"
       :class="{ active: $route.path == '/' }"
     >
@@ -17,7 +17,7 @@
       <span>{{ t("GuidePage") }}</span>
     </div>
     <div
-      class="icon_block"
+      class="icon_block earn"
       @click="$router.push('/earn')"
       :class="{ active: $route.path == '/earn' }"
     >
@@ -60,10 +60,15 @@ const { t } = useI18n({ useScope: "global" });
     align-items: center;
     justify-content: center;
     margin-top: 5px;
-    padding: 0px 6vw;
     color: var(--text-white);
     font-size: 12px;
     border-radius: 4px;
+    &.main {
+      padding: 0px 0 0 30px;
+    }
+    &.earn {
+      padding: 0px 30px 0 0;
+    }
     span {
       display: block;
     }
@@ -85,6 +90,9 @@ const { t } = useI18n({ useScope: "global" });
 @media screen and (min-width: 360px) and (max-width: 390px) {
   .icon_block {
     margin-left: 17px;
+  }
+  .add {
+    margin-right: 5px;
   }
 }
 @media screen and (min-width: 390px) {

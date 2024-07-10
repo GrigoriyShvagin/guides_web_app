@@ -8,11 +8,11 @@
         <Icon icon="solar:settings-linear" @click="settings = true" />
       </div>
       <div class="balance_buttons">
-        <button type="button" class="blue_button">
-          {{ t("ConnectWallet") }}
-        </button>
         <button type="button" class="white_button">
           {{ t("WithdrawFunds") }}
+        </button>
+        <button type="button" class="blue_button">
+          {{ t("ConnectWallet") }}
         </button>
       </div>
     </div>

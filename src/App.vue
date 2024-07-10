@@ -31,7 +31,7 @@ a {
   text-decoration: none;
 }
 :root {
-  --bg-footer: #e6e6e6;
+  --bg-footer: #e3e3e3;
   --main-bg: #fcfcfc;
   --bg-gray: #e6e6e6;
   --text-gray: #313131;
@@ -64,7 +64,7 @@ a {
   --slide-menu-bg: #1d1d1d;
   --active-info-bg: #fff;
   --active-info-text: #000;
-  --bg-footer: #0d0d0d;
+  --bg-footer: #000;
   --bg-input: #242424;
   --bg-slider: #2f2f2f;
 }
