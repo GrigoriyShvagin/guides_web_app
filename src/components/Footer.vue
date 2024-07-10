@@ -50,6 +50,7 @@ const { t } = useI18n({ useScope: "global" });
     width: 22px;
     margin-bottom: 5px;
     transition: 0.3s;
+    padding: 2px 10px;
   }
   span {
     transition: 0.3s;
@@ -76,7 +77,6 @@ const { t } = useI18n({ useScope: "global" });
 }
 .active {
   svg {
-    padding: 2px 10px;
     background: var(--active-footer);
     color: var(--button-up-bg);
     border-radius: 20px;
@@ -92,7 +92,7 @@ const { t } = useI18n({ useScope: "global" });
     margin-left: 17px;
   }
   .add {
-    margin-right: 5px;
+    margin-right: 7px;
   }
 }
 @media screen and (min-width: 390px) {
