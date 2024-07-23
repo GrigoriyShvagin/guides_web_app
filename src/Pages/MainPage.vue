@@ -1,5 +1,6 @@
 <template>
   <div class="main-page_block">
+    {{ userStore.token }}
     <div class="input_block">
       <input
         type="text"
@@ -43,16 +44,28 @@
 
 <script setup>
 import { Icon } from "@iconify/vue";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import MainGuides from "@/components/MineGuides.vue";
 import TopGuides from "@/components/TopGuides.vue";
 import { useI18n } from "vue-i18n";
+import { useUserStore } from "@/store/userStore";
 
 const { t } = useI18n({ useScope: "global" });
 
 const currentInfo = ref("Top Picks");
+let tgUnsafeData = window.Telegram.WebApp.initDataUnsafe.user;
 
-// let tg = window.Telegram.WebApp;
+const userStore = useUserStore();
+function setUser() {
+  const params = {
+    firstName: tgUnsafeData.first_name,
+    id: tgUnsafeData.id,
+    lastName: tgUnsafeData.last_name,
+    username: tgUnsafeData.username,
+  };
+  userStore.authUser({ params });
+}
+onMounted(setUser);
 </script>
 
 <style lang="scss">
