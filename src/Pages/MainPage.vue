@@ -1,6 +1,5 @@
 <template>
   <div class="main-page_block">
-    {{ userStore.token }}
     <div class="input_block">
       <input
         type="text"
@@ -53,15 +52,17 @@ import { useUserStore } from "@/store/userStore";
 const { t } = useI18n({ useScope: "global" });
 
 const currentInfo = ref("Top Picks");
-let tgUnsafeData = window.Telegram.WebApp.initDataUnsafe.user;
+  // let tgUnsafeData = window.Telegram.WebApp.initDataUnsafe;
+
+  // tgUnsafeData.chat.id;
 
 const userStore = useUserStore();
 function setUser() {
   const params = {
-    firstName: tgUnsafeData.first_name,
-    id: tgUnsafeData.id,
-    lastName: tgUnsafeData.last_name,
-    username: tgUnsafeData.username,
+    firstName: "tgUnsafeData.first_name",
+    id: 223,
+    lastName: "tgUnsafeData.last_name",
+    username: "tgUnsafeData.username",
   };
   userStore.authUser({ params });
 }
@@ -151,16 +152,15 @@ onMounted(setUser);
   width: 90%;
   overflow-x: scroll;
   scrollbar-width: none;
+  border-bottom: 3px solid var(--main-bg);
   p {
     min-width: 100px;
+    padding: 5px 0 10px 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: var(--bg-gray);
     text-align: center;
-    padding: 7px 10px;
     margin-right: 10px;
-    border-radius: 4px;
     font-weight: 500;
     color: var(--text-white);
     span svg {
@@ -168,10 +168,10 @@ onMounted(setUser);
     }
   }
   .activeInfo {
-    background: var(--active-info-bg);
-    color: var(--active-info-text);
+    border-bottom: 3px solid var(--active-info-bg);
+    color: var(--text-white);
     svg {
-      color: var(--active-info-text);
+      color: var(--text-white);
     }
   }
 }

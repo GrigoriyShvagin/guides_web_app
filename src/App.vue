@@ -48,6 +48,7 @@ a {
   --border-gray: #757575;
   --bg-buttons: #454444;
   --text-link: #00d1ff;
+  --border-opacity: #ffffff30;
 }
 [theme="dark"] {
   --main-bg: #0d0d0d;
